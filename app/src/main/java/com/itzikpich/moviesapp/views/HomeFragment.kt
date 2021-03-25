@@ -36,7 +36,9 @@ class HomeFragment: BaseFragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mainActivity.setToolbarTitle("TMDB")
+        mainActivity.setToolbarColor(R.color.orange_400)
+        mainActivity.expandToolbar(false, view.recyclerview_fragment_home)
         loadAsset(view.context, "categories.json")?.let { json ->
             CategoryItem.parseJsonToList(gson, json)?.let { categories -> // todo - handle parse error
                 Log.d(TAG, "loadAsset categories\n: $categories")

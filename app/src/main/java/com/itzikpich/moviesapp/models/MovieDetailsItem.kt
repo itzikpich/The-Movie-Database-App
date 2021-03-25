@@ -38,4 +38,5 @@ data class MovieDetailsItem(
     val voteCount: Int? // 21328
 ) {
     fun getFullImagePath() = "https://image.tmdb.org/t/p/w500/$posterPath"
+    fun getBackDropPath() = "https://image.tmdb.org/t/p/w500/$backdropPath"
 }

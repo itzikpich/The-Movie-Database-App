@@ -25,7 +25,10 @@ class MovieDetailsFragment: BaseFragment(R.layout.fragment_movie_details) {
         super.onViewCreated(view, savedInstanceState)
 
         (this.arguments?.get("movieTitle") as? String)?.let {
-            mainActivity.supportActionBar?.title = it
+//            mainActivity.supportActionBar?.title = it
+            mainActivity.expandToolbar(true, view.scrollview_details_major)
+            mainActivity.setToolbarTitle(it)
+            mainActivity.setToolbarColor(R.color.transparent)
         }
         (this.arguments?.get("movieId") as? Int)?.let {
 
@@ -34,6 +37,7 @@ class MovieDetailsFragment: BaseFragment(R.layout.fragment_movie_details) {
             movieDetailsViewModel.getMovieFromLocal(it)
             movieDetailsViewModel.movieDetailsLiveData.observe(viewLifecycleOwner, { movieDetails ->
                 movieDetails?.let { details ->
+                    mainActivity.setToolbarImage(details.getBackDropPath())
                     view.movie_details_major.setData(details)
                     view.movie_details_overview.text = details.overview
                 }

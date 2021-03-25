@@ -28,7 +28,10 @@ class CategoryFragment: BaseFragment(R.layout.fragment_category) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (this.arguments?.get("categoryTitle") as? String)?.let {
-            mainActivity.supportActionBar?.title = it
+//            mainActivity.supportActionBar?.title = it
+            mainActivity.expandToolbar(false, view.recyclerview_fragment_category)
+            mainActivity.setToolbarTitle(it)
+            mainActivity.setToolbarColor(R.color.orange_400)
         }
         (this.arguments?.get("categoryId") as? Int)?.let {
 
