@@ -1,7 +1,6 @@
-# Globes Articles Application
-This application showing 2 screen using Kotlin with mvvm as architectural design pattern, liveData as the publisher and viewPager2 for showing different data source,
-navigation is now provided by Android Navigation component.
-First screen contains my name, the current time, a navigation button and empty TextView that shows the latest pressed item's title from screen two
-in order to show the last item title we are using a shared view model between the fragments and thr activity.
-Second screen contains tab layout fragment with FragmentStateAdapter which build BaseSingeTabFragment, this fragment showing Globes xml data source fetched from network using Retrofit.  
-using kotlin coroutines for async data fetch.
+#  The Movie Database Application
+This application showing 3 screen using Kotlin with mvvm as architectural design pattern, liveData as the publisher and flow to fetch data locally or remote.
+navigation is provided by Android Navigation component.
+First screen contains three movie categories, user can click on movie item and navigate to its details screen, user can also click on more button and navigate to a page of pressed categoty
+
+all data is fetched from remote and saved locally, than the data is displayed on the app
