@@ -28,14 +28,7 @@ class MoviesRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) {
 
-    fun localMoviesLiveData() = localDataSource.loadAllCategories()
     fun localCategory(id: Int) = localDataSource.loadCategory(id)
-
-//    suspend fun addAllMoviesToLocal(categories: List<CategoryItem>) {
-//        withContext(Dispatchers.IO) {
-//            localDataSource.addAllCategories(categories)
-//        }
-//    }
 
     suspend fun addCategoryToLocal(categoryItem: CategoryItem) {
         withContext(Dispatchers.IO) {

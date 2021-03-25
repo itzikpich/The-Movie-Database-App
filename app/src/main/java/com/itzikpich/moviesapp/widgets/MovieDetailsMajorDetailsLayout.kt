@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.itzikpich.moviesapp.R
-import com.itzikpich.moviesapp.loadFromUrlToGlide
+import com.itzikpich.moviesapp.utilities.loadFromUrlToGlide
 import com.itzikpich.moviesapp.models.MovieDetailsItem
 import com.itzikpich.moviesapp.models.MovieResult
 import kotlinx.android.synthetic.main.layout_movie_details_major_details.view.*

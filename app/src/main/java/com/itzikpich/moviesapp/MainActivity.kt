@@ -11,6 +11,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.Behavior.DragCallback
 import com.google.gson.Gson
 import com.itzikpich.moviesapp.di.components.ActivityComponent
+import com.itzikpich.moviesapp.utilities.loadFromUrlToGlide
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import javax.inject.Inject
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         (appbar.layoutParams as CoordinatorLayout.LayoutParams).behavior = object : AppBarLayout.Behavior() {}
+
+//        collapsing_toolbar_layout.setCollapsedTitleTextAppearance(R.style.coll_toolbar_title)
+//        collapsing_toolbar_layout.setExpandedTitleTextAppearance()
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

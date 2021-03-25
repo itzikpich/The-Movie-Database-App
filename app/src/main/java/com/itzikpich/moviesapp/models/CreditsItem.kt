@@ -11,9 +11,7 @@ data class CreditsItem(
     @SerializedName("id")
     val id: Int?, // 500
     @SerializedName("cast")
-    val cast: List<Cast?>?,
-//    @SerializedName("crew")
-//    val crew: List<Crew?>?
+    val cast: List<Cast?>?
 ) {
     data class Cast(
         @SerializedName("adult")

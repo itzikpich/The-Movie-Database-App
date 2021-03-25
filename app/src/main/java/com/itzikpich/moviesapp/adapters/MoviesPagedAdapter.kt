@@ -27,20 +27,6 @@ class MoviesPagedAdapter(val categoryItem: CategoryItem, val movieItemListener: 
             }
             else -> throw Exception("not correct view type ")
         }
-//        return MovieViewHolder(view, categoryItem, object : CategoryLayout.CategoryLayoutInputListener {
-//            override fun onMoreButtonClicked(id: Int) {
-//                categoryLayoutInputListener.onMoreButtonClicked(id)
-//            }
-//
-//            override fun onItemClicked(id: Int) {
-//                categoryLayoutInputListener.onItemClicked(id)
-//            }
-//
-//            override fun onRefreshList(id: Int, page: Int) {
-//                categoryLayoutInputListener.onRefreshList(id, page)
-//            }
-//
-//        })
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -55,7 +41,6 @@ class MoviesPagedAdapter(val categoryItem: CategoryItem, val movieItemListener: 
                 }
                 else -> throw Exception("no correct view holder")
             }
-//            holder.bind(item)
             holder.itemView.setOnClickListener {
                 item.id?.let { it1 -> movieItemListener.onItemClicked(it1, item.title ?: "") }
             }

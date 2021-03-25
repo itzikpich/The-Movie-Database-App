@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.itzikpich.moviesapp.R
 import com.itzikpich.moviesapp.adapters.CategoriesAdapter
-import com.itzikpich.moviesapp.loadAsset
+import com.itzikpich.moviesapp.utilities.loadAsset
 import com.itzikpich.moviesapp.models.CategoryItem
-import com.itzikpich.moviesapp.observeOnce
+import com.itzikpich.moviesapp.utilities.observeOnce
 import com.itzikpich.moviesapp.view_holders.CategoryViewHolder
 import com.itzikpich.moviesapp.view_models.HomeViewModel
 import com.itzikpich.moviesapp.widgets.CategoryLayout

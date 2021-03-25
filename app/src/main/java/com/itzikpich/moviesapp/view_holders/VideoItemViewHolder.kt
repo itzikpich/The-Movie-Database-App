@@ -5,7 +5,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itzikpich.moviesapp.adapters.GenericAdapter
-import com.itzikpich.moviesapp.loadFromUrlToGlide
+import com.itzikpich.moviesapp.utilities.loadFromUrlToGlide
 import com.itzikpich.moviesapp.models.VideoItem
 import kotlinx.android.synthetic.main.item_video.view.*
 

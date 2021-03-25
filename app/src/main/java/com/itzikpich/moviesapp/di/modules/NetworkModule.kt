@@ -30,9 +30,7 @@ class NetworkModule {
         }
 
         val client = OkHttpClient.Builder().apply {
-//            if (BuildConfig.DEBUG) {
                 addNetworkInterceptor(loggingInterceptor)
-//            }
         }.build()
 
         return Retrofit.Builder()

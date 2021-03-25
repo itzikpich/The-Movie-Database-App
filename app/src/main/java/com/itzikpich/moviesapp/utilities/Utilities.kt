@@ -1,9 +1,7 @@
-package com.itzikpich.moviesapp
+package com.itzikpich.moviesapp.utilities
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Bitmap
-import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -12,28 +10,8 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.itzikpich.moviesapp.utilities.GlideApp
 import java.io.IOException
 import java.io.InputStream
-
-
-inline fun <reified T> Gson.parseJson(json: String) = this.fromJson<T>(json, object: TypeToken<T>() {}.type)
-
-//inline fun <reified T> Gson.parseJsonToListOf(json: String) = this.fromJson<List<T>>(json, object: TypeToken<List<NumberItem>>() {}.type)
-
-/**
- * Converts dp to pixel
- */
-val Int.dpToPx: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
-
-/**
- * Converts pixel to dp
- */
-val Int.pxToDp: Int get() = (this / Resources.getSystem().displayMetrics.density).toInt()
-
-//fun String.parseToItemable(gson: Gson) : Itemable = gson.fromJson(this, Itemable::class.java)
 
 fun loadAsset(context: Context, filename: String) : String? {
     return try {
