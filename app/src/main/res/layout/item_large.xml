@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_empty_layout">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_item_large"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/title_item_large"
+        app:layout_constraintDimensionRatio="16:9"
+        app:cardBackgroundColor="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_item_large"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="center"
+            tools:src="@tools:sample/backgrounds/scenic"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Theme.MoviesApp.ItemTitle"
+        android:id="@+id/title_item_large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardview_item_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/app_name"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

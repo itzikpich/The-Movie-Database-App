@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "title": "Movies Now Playing",
+    "path": "now_playing"
+  },
+  {
+    "id": 1,
+    "title": "Popular Movies",
+    "path": "popular"
+  },
+  {
+    "id": 2,
+    "title": "Movies Top Rated",
+    "path": "top_rated"
+  }
+]

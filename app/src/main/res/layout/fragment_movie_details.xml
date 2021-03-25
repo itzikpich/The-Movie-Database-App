@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+
+        <com.itzikpich.moviesapp.widgets.MovieDetailsMajorDetailsLayout
+            android:id="@+id/movie_details_major"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/orange_400"
+            android:layout_marginTop="16dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Theme.MoviesApp.Title"
+            android:id="@+id/movie_details_overview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Overview"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_details_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            />
+
+        <com.itzikpich.moviesapp.widgets.VideosLayout
+            android:id="@+id/recyclerview_movie_details_videos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            />
+
+        <com.itzikpich.moviesapp.widgets.CastLayout
+            android:id="@+id/recyclerview_movie_details_cast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

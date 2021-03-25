@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+
+    <action
+        android:id="@+id/action_to_movieDetailsFragment"
+        app:destination="@id/movieDetailsFragment"
+        >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="movieTitle"
+            app:argType="string"
+            android:defaultValue="" />
+    </action>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.itzikpich.moviesapp.views.HomeFragment"
+        android:label="TMDB"
+        tools:layout="@layout/fragment_home"
+        >
+
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" >
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="movieTitle"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" >
+            <argument
+                android:name="categoryId"
+                app:argType="integer"
+                android:defaultValue="0"
+                />
+            <argument
+                android:name="categoryTitle"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.itzikpich.moviesapp.views.MovieDetailsFragment"
+        tools:layout="@layout/fragment_movie_details"
+        >
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.itzikpich.moviesapp.views.CategoryFragment"
+        tools:layout="@layout/fragment_category"
+        >
+
+        <action
+            android:id="@+id/action_categoryFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" >
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="movieTitle"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+
+    </fragment>
+
+</navigation>

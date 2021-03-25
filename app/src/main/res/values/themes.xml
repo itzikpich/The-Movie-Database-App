@@ -1,0 +1,56 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MoviesApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/orange_400</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="background">@color/dark_gray</item>
+        <item name="backgroundColor">@color/dark_gray</item>
+        <item name="android:windowBackground">@color/dark_gray</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.MoviesApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MoviesApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MoviesApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.MoviesApp.Title" parent="Theme.MoviesApp">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Theme.MoviesApp.ItemTitle" parent="Theme.MoviesApp.Title">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Theme.MoviesApp.ItemMajorDetails" parent="Theme.MoviesApp.Title">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Theme.MoviesApp.MoreButton">
+        <item name="android:textSize">18dp</item>
+        <item name="android:text">"More"</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="backgroundColor">@android:color/transparent</item>
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

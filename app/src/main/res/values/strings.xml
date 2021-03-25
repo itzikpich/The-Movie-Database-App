@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movies App</string>
+    <string name="budget">Budget: USD%s</string>
+    <string name="release">Release: %s</string>
+    <string name="runtime">Runtime: %d</string>
+    <string name="rating">Rating: %s/10</string>
+    <string name="status">Status: %s</string>
+    <string name="casts">Casts</string>
+    <string name="videos">Videos</string>
+</resources>

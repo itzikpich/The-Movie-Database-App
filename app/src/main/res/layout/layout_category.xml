@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/title_layout_category_top"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange_400"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Theme.MoviesApp.Title"
+        android:id="@+id/title_layout_category"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/more_button_layout_category"
+        android:layout_below="@id/title_layout_category_top"
+        tools:text="Movies Now Playing Movies Now Playing Movies Now Playing"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Theme.MoviesApp.MoreButton"
+        android:id="@+id/more_button_layout_category"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/title_layout_category"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_layout_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout_category"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        />
+
+</RelativeLayout>
