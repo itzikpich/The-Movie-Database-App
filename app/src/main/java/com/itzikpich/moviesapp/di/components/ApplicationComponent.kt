@@ -22,7 +22,7 @@ import javax.inject.Singleton
     ActivitiesBindingModule::class,
     AndroidSupportInjectionModule::class
 ])
-interface ApplicationComponent: AndroidInjector<MyApplication> {
+interface ApplicationComponent {
 //    This function exposes the ActivityComponent Factory
 //    out of the graph so consumers
 //    can use it to obtain new instances of ActivityComponent

@@ -22,17 +22,15 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var gson: Gson
 
-    @Inject
+//    @Inject - was commented because you don't inject this
+    // Reference to the activity graph
     lateinit var activityComponent: ActivityComponent
-
-    companion object {
-        val TAG = this::class.java.simpleName
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 //      inject Dagger in the activity's onCreate() method before calling super.onCreate() to avoid issues with fragment restoration.
 //      (applicationContext as MyApplication).appComponent.inject(this) // not needed anymore,  going through ActivityComponent
-        (applicationContext as MyApplication).appComponent.activityComponent().create().inject(this)
+        activityComponent = (applicationContext as MyApplication).appComponent.activityComponent().create()
+        activityComponent.inject(this) // Make Dagger instantiate @Inject fields in MainActivity
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -1,6 +1,7 @@
 package com.itzikpich.moviesapp.data
 
 
+import android.util.Log
 import com.itzikpich.moviesapp.data.local.LocalDataSource
 import com.itzikpich.moviesapp.data.remote.RemoteDataSource
 import com.itzikpich.moviesapp.models.*
@@ -38,7 +39,8 @@ class MoviesRepository @Inject constructor(
 
     suspend fun getMovieResultFromRemote(path: String, page: Int) : Flow<Result<MovieResult?>> {
         return flow {
-            emit(Result.Loading)
+            Log.d("MoviesRepository" , Thread.currentThread().name)
+//            emit(Result.Loading)
             try {
                 val response = remoteDataSource.getMoviesResultFromNetwork(path, page)
                 val body = response.body()
@@ -53,7 +55,7 @@ class MoviesRepository @Inject constructor(
                 e.printStackTrace()
                 emit(Result.Error(e))
             }
-        }.flowOn(Dispatchers.IO)
+        }
     }
 
     //region MovieDetails

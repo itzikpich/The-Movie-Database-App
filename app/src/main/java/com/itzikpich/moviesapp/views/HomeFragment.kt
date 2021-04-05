@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -20,8 +21,7 @@ import javax.inject.Inject
 
 class HomeFragment: BaseFragment(R.layout.fragment_home) {
 
-    @Inject
-    lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel by viewModels<HomeViewModel> { factory }
 
     @Inject
     lateinit var gson: Gson
@@ -66,8 +66,8 @@ class HomeFragment: BaseFragment(R.layout.fragment_home) {
                 categories.forEach {
                     homeViewModel.getCategoryFromLocal(it.id)
                     homeViewModel.categoryLiveData.observe(viewLifecycleOwner, { category ->
-                        category?.let {
-                            categoryAdapter.updateItemsByCategory(it)
+                        category?.let { categoryItem ->
+                            categoryAdapter.updateItemsByCategory(categoryItem)
                         }
                     })
                 }

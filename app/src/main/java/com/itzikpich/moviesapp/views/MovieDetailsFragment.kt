@@ -3,15 +3,16 @@ package com.itzikpich.moviesapp.views
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.itzikpich.moviesapp.R
+import com.itzikpich.moviesapp.view_models.HomeViewModel
 import com.itzikpich.moviesapp.view_models.MovieDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.view.*
 import javax.inject.Inject
 
 class MovieDetailsFragment: BaseFragment(R.layout.fragment_movie_details) {
 
-    @Inject
-    lateinit var movieDetailsViewModel: MovieDetailsViewModel
+    private val movieDetailsViewModel by viewModels<MovieDetailsViewModel> { factory }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

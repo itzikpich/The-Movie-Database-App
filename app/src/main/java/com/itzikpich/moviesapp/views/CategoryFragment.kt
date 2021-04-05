@@ -3,19 +3,23 @@ package com.itzikpich.moviesapp.views
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.itzikpich.moviesapp.NavGraphDirections
 import com.itzikpich.moviesapp.R
 import com.itzikpich.moviesapp.adapters.GridMoviesPagedAdapter
 import com.itzikpich.moviesapp.view_models.CategoryViewModel
+import com.itzikpich.moviesapp.view_models.HomeViewModel
 import com.itzikpich.moviesapp.widgets.CategoryLayout
 import kotlinx.android.synthetic.main.fragment_category.view.*
 import javax.inject.Inject
 
 class CategoryFragment: BaseFragment(R.layout.fragment_category) {
 
-    @Inject
-    lateinit var categoryViewModel: CategoryViewModel
+//    @Inject
+//    lateinit var categoryViewModel: CategoryViewModel
+
+    private val categoryViewModel by viewModels<CategoryViewModel> { factory }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
