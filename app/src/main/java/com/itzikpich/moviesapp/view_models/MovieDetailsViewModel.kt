@@ -23,7 +23,7 @@ class MovieDetailsViewModel @Inject constructor(
 
     fun getMovieFromLocal(id: Int) {
         viewModelScope.launch {
-            moviesRepository.localMovieDetails(id).collect { details ->
+            moviesRepository.loadMovieDetailsItem(id).collect { details ->
                 movieDetailsLiveData.value = details
             }
         }
@@ -31,15 +31,17 @@ class MovieDetailsViewModel @Inject constructor(
 
     fun getMovieDetailsFromRemote(movieId: Int) = with(moviesRepository) {
         viewModelScope.launch {
-            getMovieDetailsFromRemote(movieId).collect { result ->
-                when(result) {
-                    is Result.Error -> {
-                    }
-                    is Result.Loading -> {
-                    }
-                    is Result.Success -> {
-                        result.data?.let {
-                            moviesRepository.addMovieDetailsToLocal(it)
+            withContext(Dispatchers.IO) {
+                getMovieDetailsFromRemote(movieId).collect { result ->
+                    when (result) {
+                        is Result.Error -> {
+                        }
+                        is Result.Loading -> {
+                        }
+                        is Result.Success -> {
+                            result.data?.let {
+                                moviesRepository.addMovieDetailsItem(it)
+                            }
                         }
                     }
                 }
@@ -55,23 +57,25 @@ class MovieDetailsViewModel @Inject constructor(
 
     fun getCreditsFromLocal(id: Int) {
         viewModelScope.launch {
-            moviesRepository.localCreditsItem(id).collect { details ->
-                creditsItemLiveData.value = details
+            moviesRepository.loadCreditsItem(id).collect { details ->
+                creditsItemLiveData.postValue(details)
             }
         }
     }
 
     fun getCreditsFromRemote(movieId: Int) = with(moviesRepository) {
         viewModelScope.launch {
-            getCreditsItemFromRemote(movieId).collect { result ->
-                when(result) {
-                    is Result.Error -> {
-                    }
-                    is Result.Loading -> {
-                    }
-                    is Result.Success -> {
-                        result.data?.let {
-                            moviesRepository.addCreditsItemToLocal(it)
+            withContext(Dispatchers.IO) {
+                getCreditsItemFromRemote(movieId).collect { result ->
+                    when (result) {
+                        is Result.Error -> {
+                        }
+                        is Result.Loading -> {
+                        }
+                        is Result.Success -> {
+                            result.data?.let {
+                                moviesRepository.addCreditsItem(it)
+                            }
                         }
                     }
                 }
@@ -87,23 +91,27 @@ class MovieDetailsViewModel @Inject constructor(
 
     fun getVideosFromLocal(id: Int) {
         viewModelScope.launch {
-            moviesRepository.localVideoDetails(id).collect { details ->
-                videosItemLiveData.value = details
+            withContext(Dispatchers.IO) {
+                moviesRepository.loadVideoItem(id).collect { details ->
+                    videosItemLiveData.postValue(details)
+                }
             }
         }
     }
 
     fun getVideoItemFromRemote(movieId: Int) = with(moviesRepository) {
         viewModelScope.launch {
-            getVideoItemFromRemote(movieId).collect { result ->
-                when(result) {
-                    is Result.Error -> {
-                    }
-                    is Result.Loading -> {
-                    }
-                    is Result.Success -> {
-                        result.data?.let {
-                            moviesRepository.addVideoItemToLocal(it)
+            withContext(Dispatchers.IO) {
+                getVideoItemFromRemote(movieId).collect { result ->
+                    when (result) {
+                        is Result.Error -> {
+                        }
+                        is Result.Loading -> {
+                        }
+                        is Result.Success -> {
+                            result.data?.let {
+                                moviesRepository.addVideoItem(it)
+                            }
                         }
                     }
                 }

@@ -3,13 +3,14 @@ package com.itzikpich.moviesapp.data
 
 import android.util.Log
 import com.itzikpich.moviesapp.data.local.LocalDataSource
+import com.itzikpich.moviesapp.data.local.LocalDataSourceImpl
 import com.itzikpich.moviesapp.data.remote.RemoteDataSource
+import com.itzikpich.moviesapp.data.remote.RemoteDataSourceImpl
 import com.itzikpich.moviesapp.models.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,24 +26,18 @@ import javax.inject.Singleton
 
 @Singleton
 class MoviesRepository @Inject constructor(
-    private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
-) {
+    private val localDataSourceImpl: LocalDataSourceImpl,
+    private val remoteDataSourceImpl: RemoteDataSourceImpl
+) : LocalDataSource by localDataSourceImpl {
 
-    fun localCategory(id: Int) = localDataSource.loadCategory(id)
-
-    suspend fun addCategoryToLocal(categoryItem: CategoryItem) {
-        withContext(Dispatchers.IO) {
-            localDataSource.addCategory(categoryItem)
-        }
-    }
+//    fun localCategory(id: Int) = localDataSourceImpl.loadCategory(id)
 
     suspend fun getMovieResultFromRemote(path: String, page: Int) : Flow<Result<MovieResult?>> {
         return flow {
             Log.d("MoviesRepository" , Thread.currentThread().name)
 //            emit(Result.Loading)
             try {
-                val response = remoteDataSource.getMoviesResultFromNetwork(path, page)
+                val response = remoteDataSourceImpl.getMoviesResultFromNetwork(path, page)
                 val body = response.body()
                 if (response.isSuccessful) {
                     body?.let { it ->
@@ -60,19 +55,11 @@ class MoviesRepository @Inject constructor(
 
     //region MovieDetails
 
-    fun localMovieDetails(id: Int) = localDataSource.loadMovieDetailsItem(id)
-
-    suspend fun addMovieDetailsToLocal(movieDetailsItem: MovieDetailsItem) {
-        withContext(Dispatchers.IO) {
-            localDataSource.addMovieDetailsItem(movieDetailsItem)
-        }
-    }
-
     suspend fun getMovieDetailsFromRemote(movieId: Int) : Flow<Result<MovieDetailsItem?>> {
         return flow {
             emit(Result.Loading)
             try {
-                val response = remoteDataSource.getMovieDetailsFromNetwork(movieId)
+                val response = remoteDataSourceImpl.getMovieDetailsFromNetwork(movieId)
                 if (response.isSuccessful) {
                     emit(Result.Success(response.body()))
                 }
@@ -88,19 +75,12 @@ class MoviesRepository @Inject constructor(
 
     //region videoItem
 
-    fun localVideoDetails(id: Int) = localDataSource.loadVideoItem(id)
-
-    suspend fun addVideoItemToLocal(videoItem: VideoItem) {
-        withContext(Dispatchers.IO) {
-            localDataSource.addVideoItem(videoItem)
-        }
-    }
-
     suspend fun getVideoItemFromRemote(movieId: Int) : Flow<Result<VideoItem?>> {
+        Log.d("MoviesRepository" , Thread.currentThread().name)
         return flow {
             emit(Result.Loading)
             try {
-                val response = remoteDataSource.getVideoItemFromNetwork(movieId)
+                val response = remoteDataSourceImpl.getVideoItemFromNetwork(movieId)
                 if (response.isSuccessful) {
                     emit(Result.Success(response.body()))
                 }
@@ -116,19 +96,11 @@ class MoviesRepository @Inject constructor(
 
     //region CreditItem
 
-    fun localCreditsItem(id: Int) = localDataSource.loadCreditsItem(id)
-
-    suspend fun addCreditsItemToLocal(creditsItem: CreditsItem) {
-        withContext(Dispatchers.IO) {
-            localDataSource.addCreditsItem(creditsItem)
-        }
-    }
-
     suspend fun getCreditsItemFromRemote(movieId: Int) : Flow<Result<CreditsItem?>> {
         return flow {
             emit(Result.Loading)
             try {
-                val response = remoteDataSource.getCreditItemFromNetwork(movieId)
+                val response = remoteDataSourceImpl.getCreditItemFromNetwork(movieId)
                 if (response.isSuccessful) {
                     emit(Result.Success(response.body()))
                 }

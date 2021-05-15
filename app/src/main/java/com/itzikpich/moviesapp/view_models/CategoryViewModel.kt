@@ -19,7 +19,7 @@ class CategoryViewModel @Inject constructor(
 
     fun getLocalCategory(id: Int) {
         viewModelScope.launch {
-            moviesRepository.localCategory(id).collect { category ->
+            moviesRepository.loadCategory(id).collect { category ->
                 categoryMutableLiveData.value = category
             }
         }
