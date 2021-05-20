@@ -32,18 +32,15 @@ class MoviesRepository @Inject constructor(
 
 //    fun localCategory(id: Int) = localDataSourceImpl.loadCategory(id)
 
-    suspend fun getMovieResultFromRemote(path: String, page: Int) : Flow<Result<MovieResult?>> {
+    suspend fun getMovieResultFromRemote(path: String, page: Int) : Flow<Result<MovieResult>> {
         return flow {
             Log.d("MoviesRepository" , Thread.currentThread().name)
-//            emit(Result.Loading)
             try {
                 val response = remoteDataSourceImpl.getMoviesResultFromNetwork(path, page)
-                val body = response.body()
                 if (response.isSuccessful) {
-                    body?.let { it ->
-                        it?.let {
-                            emit(Result.Success(it))
-                        }
+                    val body = response.body()
+                    body?.let {
+                        emit(Result.Success(it))
                     }
                 }
             } catch (e: Exception) {
